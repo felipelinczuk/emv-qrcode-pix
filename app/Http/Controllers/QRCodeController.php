@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use Mpdf\QrCode\QrCode;
 use Mpdf\QrCode\Output;
+use Exception;
 
 class QRCodeController extends Controller
 {
@@ -96,16 +97,15 @@ class QRCodeController extends Controller
             $this->struct[4]['lc'] = strlen($emv) < 10? '0' .  (string) strlen($emv) : (string) strlen($emv) ;
             $this->struct[4]['content'] = $emv;
 
-            $this->struct[7]['content'] = '0.13';
+            $this->struct[7]['content'] = '100.00';
             $this->struct[7]['lc'] = strlen($this->struct[7]['content']) < 10? '0' . (string) strlen($this->struct[7]['content']) : (string) strlen($this->struct[7]['content']);
 
-            $this->struct[9]['content'] = 'Empresa';
+            $this->struct[9]['content'] = 'EMPRESA';
             $this->struct[9]['lc'] = strlen($this->struct[9]['content']) < 10? '0' . (string) strlen($this->struct[9]['content']) : (string) strlen($this->struct[9]['content']);
 
             $this->struct[10]['content'] = 'SAO PAULO';
             $this->struct[10]['lc'] = strlen($this->struct[10]['content']) < 10? '0' . (string) strlen($this->struct[10]['content']) : (string) strlen($this->struct[10]['content']);
 
-            $this->struct[11]['content'] = str_shuffle('abcdefghijklmnopqrstuvwxyz');
             $this->struct[11]['lc'] = strlen($this->struct[11]['content']) < 3? '0' . (string) 7 + strlen($this->struct[11]['content']) : (string) 7 + strlen($this->struct[11]['content']);
 
 
